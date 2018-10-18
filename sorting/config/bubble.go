@@ -1,32 +1,28 @@
 package config
 
-import (
-	"fmt"
-	"io/ioutil"
-)
-
-func ReadFile() {
-	data, err := ioutil.ReadFile("number.txt")
-	if err != nil {
-		return
+func BubbleSort(numbers []int) {
+	var N int = len(numbers)
+	var i int
+	for i = 0; i < N; i++ {
+		Sweep(numbers)
 	}
-	fmt.Println(string(data))
 }
 
-func BubbleSort(input [10]int) {
-	// n is the number of items in our list
-	n := 10
-	swapped := true
-	for swapped {
-		swapped = false
-		for i := 1; i < n-1; i++ {
-			if input[i-1] > input[i] {
-				fmt.Println("Swapping")
-				// swap values using Go's tuple assignment
-				input[i], input[i-1] = input[i-1], input[i]
-				swapped = true
-			}
+func Sweep(numbers []int) {
+	var N int = len(numbers)
+	var firstIndex int = 0
+	var secondIndex int = 1
+
+	for secondIndex < N {
+		var firstNumber int = numbers[firstIndex]
+		var secondNumber int = numbers[secondIndex]
+
+		if firstNumber > secondNumber {
+			numbers[firstIndex] = secondNumber
+			numbers[secondIndex] = firstNumber
 		}
+
+		firstIndex++
+		secondIndex++
 	}
-	fmt.Println(input)
 }

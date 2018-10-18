@@ -1,11 +1,26 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
+	"os"
 	"sorting/config"
 )
 
-var toBeSorted [10]int = [10]int{25, 20, 17, 60, 100, 4, 10}
-
 func main() {
-	config.BubbleSort(toBeSorted)
+	// Open the file.
+	f, _ := os.Open("number.txt")
+	// Create a new Scanner for the file.
+	scanner := bufio.NewScanner(f)
+	// Loop over all lines in the file and print them.
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
+	}
+
+	var numbers []int = []int{5, 4, 2, 3, 1, 0}
+	fmt.Println(numbers)
+
+	config.BubbleSort(numbers)
+	fmt.Println("Sorted:", numbers)
 }
